@@ -1,17 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.fanchen001'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.1'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
-        multiDexEnabled true
+//        multiDexEnabled true
         applicationId "com.fanchen.mbase"
         minSdkVersion 19
-        //noinspection OldTargetApi
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -22,58 +19,12 @@ android {
         }
     }
 }
-
 repositories {
     flatDir {
-        dirs 'libs'
+        dirs 'libs', "../library/libs"
     }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    /** *******是support 支持库                                      *********/
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation('com.android.support:recyclerview-v7:27.1.1') {
-        exclude module: 'support-v4'
-    }
-    /** *******swipebackhelper 滑动返回                          *********/
-    implementation 'com.jude:swipebackhelper:3.1.2'
-    /** ******* BaseRecyclerAdapter                        *********/
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
-    /** *********谷歌官方分dex方案                       ************/
-    implementation 'com.android.support:multidex:1.0.3'
-    /** ***** kotlin runtime                       *******/
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    /** ****** GSON json 解析                    ********/
-    implementation 'com.google.code.gson:gson:2.8.2'
-    /** *******是squareup 全家桶                      *********/
-    implementation 'com.squareup.okio:okio:1.14.1'
-    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
-    /** **********   kprogresshud                    *********/
-    implementation 'com.kaopiz:kprogresshud:1.2.0'
-    /** ******* glide 图片加载                        *********/
-    implementation 'com.github.bumptech.glide:glide:3.8.0'
-    /** *******  ucrop图片裁剪                 *********/
-    implementation('com.yalantis:ucrop:2.2.0') {
-        exclude group: 'com.android.support'
-        exclude group: 'com.squareup.okio'
-        exclude group: 'com.squareup.okhttp3'
-    }
-    implementation('com.chensl.rotatephotoview:rotatephotoview:1.0.5') {
-        exclude group: 'com.android.support', module: 'appcompat'
-        exclude group: 'com.android.support', module: 'support-v4'
-        exclude module: 'recyclerview-v7'
-    }
-    /** *******     文件选择器     *********/
-    implementation 'com.leon:lfilepickerlibrary:1.8.0'
-    /** *******     permission权限管理     *********/
-    implementation(name: 'hipermission-1.0.7', ext: 'aar')
-    /** *******     bilibili图片选择裁剪库     *********/
-    implementation(name: 'boxing-1.0.4', ext: 'aar')
-    implementation(name: 'boxing-impl-1.0.4', ext: 'aar')
-    /** *******     nineoldandroids     *********/
-    implementation files('libs/nineoldandroids-2.4.0.jar')
+    implementation project(path: ':library')
 }

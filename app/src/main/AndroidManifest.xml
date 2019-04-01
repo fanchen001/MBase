@@ -6,6 +6,5 @@
         android:allowBackup="true"
         android:label="MBase"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:ignore="GoogleAppIndexingWarning" />
 </manifest>
