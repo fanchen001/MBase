@@ -2,13 +2,17 @@
 buildscript {
     ext.kotlin_version = '1.2.61'
     repositories {
-        maven {url 'https://maven.google.com'}
+        jcenter()
         jcenter()
         mavenCentral()
+        maven {url 'https://maven.google.com'}
+        maven { url "https://jitpack.io" }
+        maven { url "https://dl.bintray.com/thelasterstar/maven/"}
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
