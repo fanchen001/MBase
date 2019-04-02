@@ -26,7 +26,9 @@ import android.os.Environment.getExternalStorageDirectory
 import android.annotation.TargetApi
 import android.database.Cursor
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
+import android.support.annotation.RequiresApi
 
 
 /**
@@ -65,6 +67,7 @@ object ImageUtil {
      * @param bit 图片
      * @return base64 编码的图片
      */
+    @RequiresApi(Build.VERSION_CODES.FROYO)
     fun bitmap_Base64(bit: Bitmap?): String? {
         val bytes = StreamUtil.bitmap2Byte(bit)
         return Base64.encodeToString(bytes, Base64.DEFAULT)
@@ -86,6 +89,7 @@ object ImageUtil {
      * @param base64
      * @return
      */
+    @RequiresApi(Build.VERSION_CODES.FROYO)
     fun base64_Bitmap(base64: String?): Bitmap? {
         val base64ToByte = EncryptUtil.base64ToByte(base64)
         return bytes2Bitmap(base64ToByte)
@@ -97,6 +101,7 @@ object ImageUtil {
      * @param bytes 字节数组
      * @return drawable
      */
+    @RequiresApi(Build.VERSION_CODES.DONUT)
     fun bytes2Drawable(context: Context?, bytes: ByteArray?): Drawable? {
         return bitmap2Drawable(context, bytes2Bitmap(bytes))
     }
@@ -135,12 +140,13 @@ object ImageUtil {
         return ret
     }
 
-    /**
-     * 获取图片旋转角度
-     *
-     * @param filePath 文件路径
-     * @return 旋转角度
-     */
+    @RequiresApi(Build.VERSION_CODES.ECLAIR)
+            /**
+             * 获取图片旋转角度
+             *
+             * @param filePath 文件路径
+             * @return 旋转角度
+             */
     fun getRotateDegree(filePath: String): Int {
         try {
             val exifInterface = ExifInterface(filePath)
@@ -252,13 +258,13 @@ object ImageUtil {
         return src == null || src.width == 0 || src.height == 0
     }
 
-
     /**
      * bitmap转drawable
      *
      * @param bitmap bitmap对象
      * @return drawable
      */
+    @RequiresApi(Build.VERSION_CODES.DONUT)
     fun bitmap2Drawable(context: Context?, bitmap: Bitmap?): Drawable? {
         return if (bitmap == null) null else BitmapDrawable(context?.getResources(), bitmap)
     }

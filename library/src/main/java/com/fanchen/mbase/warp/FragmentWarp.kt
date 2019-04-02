@@ -217,7 +217,8 @@ fun Fragment.setBackgroundResource(@DrawableRes resId: Int) {
  * @param background 背景
  */
 fun Fragment.setBackground(background: Drawable) {
-    ViewCompat.setBackground(view, background)
+    val v = view ?: return
+    ViewCompat.setBackground(v, background)
 }
 
 /**
@@ -227,5 +228,6 @@ fun Fragment.setBackground(background: Drawable) {
  * @param background 背景
  */
 fun Fragment.setBackgroundBitmap(bitmap: Bitmap) {
-    ViewCompat.setBackground(view, ImageUtil.bitmap2Drawable(context, bitmap))
+    val v = view ?: return
+    ViewCompat.setBackground(v, ImageUtil.bitmap2Drawable(context, bitmap))
 }

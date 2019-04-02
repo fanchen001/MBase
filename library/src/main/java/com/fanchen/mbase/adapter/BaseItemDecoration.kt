@@ -12,9 +12,9 @@ import com.fanchen.mbase.util.DisplayUtil
  */
 class BaseItemDecoration(private val offsets: Float) : RecyclerView.ItemDecoration() {
 
-    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
-        val baseQuickAdapter = parent?.adapter as? BaseQuickAdapter<*, *>
-        val position = parent?.getChildLayoutPosition(view) ?: return
+    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+        val baseQuickAdapter = parent.adapter as? BaseQuickAdapter<*, *>
+        val position = parent.getChildLayoutPosition(view)
         val dp2px = DisplayUtil.dp2px(parent.context, offsets)
         if (baseQuickAdapter != null) {
             if (baseQuickAdapter.headerLayoutCount > 0 && baseQuickAdapter.headerLayoutCount > position) {
@@ -24,9 +24,9 @@ class BaseItemDecoration(private val offsets: Float) : RecyclerView.ItemDecorati
             }
         }
         if (parent.getChildLayoutPosition(view).rem(2) == 0) {
-            outRect?.set(dp2px, dp2px, dp2px, 0)
+            outRect.set(dp2px, dp2px, dp2px, 0)
         } else {
-            outRect?.set(0, dp2px, dp2px, 0)
+            outRect.set(0, dp2px, dp2px, 0)
         }
     }
 

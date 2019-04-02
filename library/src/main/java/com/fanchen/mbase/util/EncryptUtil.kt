@@ -1,5 +1,7 @@
 package com.fanchen.mbase.util
 
+import android.os.Build
+import android.support.annotation.RequiresApi
 import android.util.Base64
 import java.io.File
 import java.io.FileInputStream
@@ -897,7 +899,9 @@ object EncryptUtil {
      * @param base64Message the message
      * @return the string
      */
-    fun base64ToByte(base64Message: String): ByteArray {
+    @RequiresApi(Build.VERSION_CODES.FROYO)
+    fun base64ToByte(base64Message: String?): ByteArray {
+        base64Message ?: return ByteArray(0)
         return Base64.decode(base64Message, Base64.DEFAULT)
     }
 
