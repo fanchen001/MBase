@@ -7,7 +7,6 @@ import android.os.Looper
 import android.text.TextUtils
 import com.fanchen.mbase.http.call.Callback
 import com.fanchen.mbase.http.call.SignCallback
-import com.fanchen.mbase.http.converter.GsonConverterFactory
 import com.fanchen.mbase.http.interceptor.CxcInterceptor
 import com.fanchen.mbase.http.interceptor.HttpLogInterceptor.Logger.FileLogger
 import com.fanchen.mbase.util.DateUtil
@@ -70,8 +69,8 @@ class OkHttpUtil {
             val interceptor = CxcInterceptor(url, FileLogger(logFile))
             builder.addInterceptor(interceptor)
         }
-        val create = GsonConverterFactory.create()
-        map[clazz] = Retrofit.Builder().baseUrl(url).addConverterFactory(create).client(builder.build()).build()
+//        val create = GsonConverterFactory.create()
+//        map[clazz] = Retrofit.Builder().baseUrl(url).addConverterFactory(create).client(builder.build()).build()
     }
 
     /**

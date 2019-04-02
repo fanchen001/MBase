@@ -51,4 +51,5 @@ abstract class BaseFragmentAdapter(fm: FragmentManager) : FragmentStatePagerAdap
     open fun getExtendInfo(): Any? {
         return null
     }
+
 }
