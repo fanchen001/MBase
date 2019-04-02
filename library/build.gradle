@@ -22,13 +22,6 @@ android {
 
 }
 
-repositories {
-    mavenCentral()
-    flatDir {
-        dirs 'libs'
-    }
-}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     /** *******是support 支持库                                      *********/
@@ -67,11 +60,18 @@ dependencies {
     implementation('com.leon:lfilepickerlibrary:1.8.0') {
         exclude group: 'com.android.support'
     }
-    /** *******     permission权限管理     *********/
-    implementation(name: 'hipermission-1.0.7', ext: 'aar')
-    /** *******     bilibili图片选择裁剪库     *********/
-    implementation(name: 'boxing-1.0.4', ext: 'aar')
-    implementation(name: 'boxing-impl-1.0.4', ext: 'aar')
+//    /** *******     permission权限管理     *********/
+//    implementation(name: 'hipermission-1.0.7', ext: 'aar')
+//    /** *******     bilibili图片选择裁剪库     *********/
+//    implementation(name: 'boxing-1.0.4', ext: 'aar')
+//    implementation(name: 'boxing-impl-1.0.4', ext: 'aar')
     /** *******     nineoldandroids     *********/
     implementation files('libs/nineoldandroids-2.4.0.jar')
+}
+
+repositories {
+    google()
+    jcenter()
+    mavenCentral()
+    maven { url "https://jitpack.io" }
 }
