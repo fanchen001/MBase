@@ -8,6 +8,8 @@ import android.preference.PreferenceManager
 import android.view.View
 import android.view.ViewGroup
 import com.fanchen.mbase.http.OkHttpUtil
+import com.fanchen.mbase.util.AppUtil
+import com.litesuits.orm.LiteOrm
 
 /**
  * BaseFragment
@@ -19,6 +21,8 @@ abstract class BaseFragment : Fragment(), Runnable {
     var isPrepared = false
     //http請求工具
     val mHttpUtil: OkHttpUtil by lazy { (activity as? BaseActivity)?.mHttpUtil ?: OkHttpUtil.with(activity)}
+    val mSingleOrm by lazy { (activity as? BaseActivity)?.mSingleOrm ?: LiteOrm.newSingleInstance(activity?.application, AppUtil.getPackageName(activity?.application)) }
+    val mCascadeOrm by lazy { (activity as? BaseActivity)?.mCascadeOrm ?:LiteOrm.newCascadeInstance(activity?.application,AppUtil.getPackageName(activity?.application)) }
     //序列化Preferences
     val mPreferences: SharedPreferences by lazy {(activity as? BaseActivity)?.mPreferences ?: PreferenceManager.getDefaultSharedPreferences(activity)}
 

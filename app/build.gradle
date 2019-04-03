@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
-//        multiDexEnabled true
+        multiDexEnabled true
         applicationId "com.fanchen.mbase"
         minSdkVersion 19
         targetSdkVersion 28
@@ -19,13 +19,16 @@ android {
         }
     }
 }
-//repositories {
-//    flatDir {
-//        dirs 'libs', "../library/libs"
-//    }
-//}
+
+repositories {
+    flatDir {
+        dirs 'libs', "../library/libs"
+    }
+}
 
 dependencies {
-//    implementation project(path: ':library')
-//    implementation 'com.github.fanchen001:MBase:v1.0.6'
+    api project(path: ':library')
+}
+repositories {
+    mavenCentral()
 }

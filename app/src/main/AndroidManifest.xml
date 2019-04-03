@@ -6,5 +6,15 @@
         android:allowBackup="true"
         android:label="MBase"
         android:supportsRtl="true"
-        tools:ignore="GoogleAppIndexingWarning" />
+        android:name="com.fanchen.TestApplication"
+        tools:ignore="GoogleAppIndexingWarning" >
+
+        <activity android:name="com.fanchen.Test">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 </manifest>

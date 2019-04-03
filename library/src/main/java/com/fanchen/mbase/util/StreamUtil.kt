@@ -2,7 +2,7 @@ package com.fanchen.mbase.util
 
 import android.graphics.*
 import android.graphics.drawable.Drawable
-//import com.fanchen.mbase.warp.toJson
+import com.fanchen.mbase.warp.toJson
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -101,11 +101,11 @@ object StreamUtil {
     }
 
     //post方式提交json
-//    fun postAtJson(url: String, body: Any? = null): ByteArray? {
-//        var map = getDefHeader()
-//        map.put("Content-Type", "application/json")
-//        return url2Byte(url, "POST", map, body?.toJson() ?: "")
-//    }
+    fun postAtJson(url: String, body: Any? = null): ByteArray? {
+        var map = getDefHeader()
+        map.put("Content-Type", "application/json")
+        return url2Byte(url, "POST", map, body?.toJson() ?: "")
+    }
 
     fun url2Byte(url: String, method: String = "GET", header: Map<String, String>? = null, body: String? = null): ByteArray? {
         return url2Byte(URL(url), method, header, body)

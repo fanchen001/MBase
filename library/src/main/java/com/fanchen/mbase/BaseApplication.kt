@@ -7,6 +7,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
 import android.support.multidex.MultiDexApplication
+import com.bilibili.boxing.BoxingCrop
+import com.bilibili.boxing.BoxingMediaLoader
+import com.fanchen.mbase.boxing.GlideMediaLoaderImpl
+import com.fanchen.mbase.boxing.UcropImpl
+import com.fanchen.mbase.dialog.BaseDialog
 import com.fanchen.mbase.warp.startActivity
 
 /**
@@ -25,6 +30,8 @@ abstract class BaseApplication : MultiDexApplication(), Application.ActivityLife
     override fun onCreate() {
         super.onCreate()
         BaseApplication.instance = this
+        BoxingMediaLoader.getInstance().init(GlideMediaLoaderImpl())
+        BoxingCrop.getInstance().init(UcropImpl())
         registerActivityLifecycleCallbacks(this)
     }
 
