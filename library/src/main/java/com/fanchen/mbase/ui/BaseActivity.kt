@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.os.Bundle
 import android.os.Build
 import android.preference.PreferenceManager
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.fanchen.mbase.http.OkHttpUtil
 import com.fanchen.mbase.BaseApplication
@@ -20,7 +21,7 @@ import com.litesuits.orm.LiteOrm
  * BaseActivity
  * Created by fanchen on 2018/8/31.
  */
-abstract class BaseActivity : Activity(), Runnable {
+abstract class BaseActivity : AppCompatActivity(), Runnable {
     //http請求工具
     val mHttpUtil: OkHttpUtil by lazy { OkHttpUtil.with(this) }
     val mSingleOrm by lazy { LiteOrm.newSingleInstance(application,AppUtil.getPackageName(application)) }

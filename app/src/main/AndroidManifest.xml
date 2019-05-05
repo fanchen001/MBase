@@ -6,6 +6,7 @@
         android:allowBackup="true"
         android:label="MBase"
         android:supportsRtl="true"
+        android:theme="@style/Base.Theme.AppCompat.Light"
         android:name="com.fanchen.TestApplication"
         tools:ignore="GoogleAppIndexingWarning" >
 
