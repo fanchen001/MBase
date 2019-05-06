@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button1"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alert" />
+
+    <Button
+        android:id="@+id/button2"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm" />
+
+    <Button
+        android:id="@+id/button3"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Input" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="show" />
+
+    <Button
+        android:id="@+id/button5"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MaterialDialog" />
+
+    <Button
+        android:id="@+id/button6"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MaterialListDialog" />
+
+    <Button
+        android:id="@+id/button7"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MaterialList ICON" />
+
+    <Button
+        android:id="@+id/button8"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SheetAction" />
+
+    <Button
+        android:id="@+id/button9"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show HUD" />
+</LinearLayout>

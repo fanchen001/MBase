@@ -8,8 +8,8 @@ import android.text.TextUtils
 import com.fanchen.mbase.http.call.Callback
 import com.fanchen.mbase.http.call.SignCallback
 import com.fanchen.mbase.http.converter.GsonConverterFactory
-import com.fanchen.mbase.http.interceptor.CxcInterceptor
 import com.fanchen.mbase.http.interceptor.HttpLogInterceptor.Logger.FileLogger
+import com.fanchen.mbase.http.interceptor.OriginInterceptor
 import com.fanchen.mbase.util.DateUtil
 import com.fanchen.mbase.util.NetworkUtil
 import okhttp3.OkHttpClient
@@ -67,7 +67,7 @@ class OkHttpUtil {
         if(isLog){
             val fileName = String.format("%s.log", DateUtil.getCurrentDate("yyyy-MM-dd"))
             val logFile = File(appContext?.externalCacheDir, fileName)
-            val interceptor = CxcInterceptor(url, FileLogger(logFile))
+            val interceptor = OriginInterceptor(url, logger = FileLogger(logFile))
             builder.addInterceptor(interceptor)
         }
         val create = GsonConverterFactory.create()

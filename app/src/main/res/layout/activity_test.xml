@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/button1"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Permission" />
+
+    <Button
+        android:id="@+id/button2"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Http" />
+
+    <Button
+        android:id="@+id/button3"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dialog  HUD" />
+
+    <Button
+        android:id="@+id/button4"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fragment" />
+
+    <Button
+        android:id="@+id/button5"
+        android:onClick="onClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Leak" />
+</LinearLayout>

@@ -16,6 +16,22 @@ import com.fanchen.mbase.warp.showToast
  */
 object SystemUtil {
 
+    /**
+     * @param context
+     */
+    fun startAppSetting(context: Activity?) {
+        if (context == null) return
+        try {
+            val mIntent = Intent("android.settings.APPLICATION_DETAILS_SETTINGS")
+            mIntent.data = Uri.parse("package:" + context.packageName)
+            context.startActivity(mIntent)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            context.finish()
+        }
+    }
+
     /***
      * @param context
      * @param file

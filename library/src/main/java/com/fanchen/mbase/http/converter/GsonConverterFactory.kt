@@ -1,5 +1,6 @@
 package com.fanchen.mbase.http.converter
 
+import com.fanchen.mbase.util.LogUtil
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter
 import com.google.gson.reflect.TypeToken
@@ -11,6 +12,7 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import java.io.IOException
 import java.io.OutputStreamWriter
+import java.io.StringReader
 import java.lang.reflect.Type
 import java.nio.charset.Charset
 
@@ -63,7 +65,9 @@ internal class GsonConverterFactory private constructor(private val gson: Gson) 
 
         @Throws(IOException::class)
         override fun convert(value: ResponseBody): T {
-            val jsonReader = gson.newJsonReader(value.charStream())
+            val string = value.string()
+            LogUtil.e("convert","" + string)
+            val jsonReader = gson.newJsonReader(StringReader(string))
             try {
                 return adapter.read(jsonReader)
             } catch (e: Exception) {

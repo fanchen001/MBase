@@ -59,7 +59,9 @@ abstract class BaseActivity : AppCompatActivity(), Runnable {
      * @param intent
      * @param savedState
      */
-    open fun beforCreate(intent: Intent?, savedState: Bundle?) {}
+    open fun beforeCreate(intent: Intent?, savedState: Bundle?):Boolean {
+        return true
+    }
 
     /**
      *
@@ -93,7 +95,7 @@ abstract class BaseActivity : AppCompatActivity(), Runnable {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val inte = intent
-        beforCreate(inte, savedInstanceState)
+        val create = beforeCreate(inte, savedInstanceState)
         super.onCreate(savedInstanceState.apply { mSavedState = this })
         val layoutInflater = layoutInflater
         mRootView = getLayoutView(layoutInflater, getLayout())
@@ -103,7 +105,7 @@ abstract class BaseActivity : AppCompatActivity(), Runnable {
         mBackPage.setSwipeBackEnable(openSwipe())// 设置是否可滑动
         mBackPage.setSwipeRelateEnable(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)// 是否与下一级activity联动(微信效果)仅限5.0以上机器
         mBackPage.setDisallowInterceptTouchEvent(false)
-        mRootView?.post(this)
+        if(create) mRootView?.post(this)
     }
 
     override fun getResources(): Resources {//还原字体大小

@@ -119,7 +119,7 @@ abstract class BaseDialog<T : BaseDialog<T>> : Dialog {
      */
     abstract fun setUiBeforShow()
 
-    override fun onCreate(savedInstanceState: Bundle) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         dm = context?.resources?.displayMetrics
         ll_top = LinearLayout(context)
         ll_top?.gravity = Gravity.CENTER

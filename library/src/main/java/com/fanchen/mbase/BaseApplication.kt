@@ -12,6 +12,7 @@ import com.bilibili.boxing.BoxingMediaLoader
 import com.fanchen.mbase.boxing.GlideMediaLoaderImpl
 import com.fanchen.mbase.boxing.UcropImpl
 import com.fanchen.mbase.dialog.BaseDialog
+import com.fanchen.mbase.library.R
 import com.fanchen.mbase.warp.startActivity
 
 /**
@@ -30,6 +31,7 @@ abstract class BaseApplication : MultiDexApplication(), Application.ActivityLife
     override fun onCreate() {
         super.onCreate()
         BaseApplication.instance = this
+        BaseDialog.DEFAULT_STYLE = R.style.BaseDialog
         BoxingMediaLoader.getInstance().init(GlideMediaLoaderImpl())
         BoxingCrop.getInstance().init(UcropImpl())
         registerActivityLifecycleCallbacks(this)

@@ -125,7 +125,7 @@ open class HttpLogInterceptor(private val logger: Logger = DEFAULT) : Intercepto
         try {
             response = chain.proceed(request)
         } catch (e: Exception) {
-            logger.log("<-- HTTP FAILED: " + e)
+            logger.log("<-- HTTP FAILED: $e")
             throw e
         }
         val tookMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNs)
@@ -136,7 +136,7 @@ open class HttpLogInterceptor(private val logger: Logger = DEFAULT) : Intercepto
         else
             "unknown-length"
         logger.log(("<-- " + response.code() + ' ' + response.message() + ' ' + response.request().url() + " (" + tookMs + "ms" + (if (!logHeaders)
-            ", " + bodySize + " body"
+            ", $bodySize body"
         else
             "") + ')'))
         if (logHeaders) {

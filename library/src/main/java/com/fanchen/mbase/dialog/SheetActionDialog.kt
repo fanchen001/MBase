@@ -11,13 +11,9 @@ import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LayoutAnimationController
 import android.view.animation.TranslateAnimation
+import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams
-import android.widget.ListView
-import android.widget.TextView
 
 import java.util.ArrayList
 
@@ -356,7 +352,7 @@ class SheetActionDialog : BottomBaseDialog<SheetActionDialog> {
             return position.toLong()
         }
 
-        override fun getView(position: Int, convertView: View, parent: ViewGroup): View {
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val item = contents[position]
             val ll_item = LinearLayout(context)
             ll_item.orientation = LinearLayout.HORIZONTAL
@@ -406,15 +402,23 @@ class SheetActionDialog : BottomBaseDialog<SheetActionDialog> {
 
         /**
          * @param context
+         * @param title
          * @param titles
          * @param l
          * @return
          */
-        fun show(context: Context, titles: Array<String>, l: com.fanchen.mbase.dialog.OnItemClickListener): SheetActionDialog {
-            val sheetActionDialog = SheetActionDialog(context, titles, null)
-            sheetActionDialog.setOnOperItemClickL(l)
-            sheetActionDialog.show()
-            return sheetActionDialog
+        fun show(context: Context, title: String? = null, titles: Array<String>, l: ((BaseDialog<*>?, AdapterView<*>?, View?, Int, Long) -> Unit)?): SheetActionDialog {
+            return show(context, title, titles, object : com.fanchen.mbase.dialog.OnItemClickListener {
+
+                override fun onItemClick(dialog: BaseDialog<*>?, parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    if (l == null) {
+                        dialog?.dismiss()
+                    } else {
+                        l.invoke(dialog, parent, view, position, id)
+                    }
+                }
+
+            })
         }
 
         /**
@@ -424,9 +428,10 @@ class SheetActionDialog : BottomBaseDialog<SheetActionDialog> {
          * @param l
          * @return
          */
-        fun show(context: Context, title: String, titles: Array<String>, l: com.fanchen.mbase.dialog.OnItemClickListener): SheetActionDialog {
+        fun show(context: Context, title: String? = null, titles: Array<String>, l: com.fanchen.mbase.dialog.OnItemClickListener? = null): SheetActionDialog {
             val sheetActionDialog = SheetActionDialog(context, titles, null)
-            sheetActionDialog.setOnOperItemClickL(l).title(title)
+            if (l != null) sheetActionDialog.setOnOperItemClickL(l)
+            if (title != null) sheetActionDialog.title(title)
             sheetActionDialog.show()
             return sheetActionDialog
         }
