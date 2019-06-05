@@ -95,10 +95,10 @@ abstract class BaseActivity : AppCompatActivity(), Runnable {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val inte = intent
-        val create = beforeCreate(inte, savedInstanceState)
-        super.onCreate(savedInstanceState.apply { mSavedState = this })
         val layoutInflater = layoutInflater
         mRootView = getLayoutView(layoutInflater, getLayout())
+        val create = beforeCreate(inte, savedInstanceState)
+        super.onCreate(savedInstanceState.apply { mSavedState = this })
         if(mRootView != null)setContentView(mRootView)
         SwipeBackHelper.onCreate(this)
         mBackPage.setSwipeEdgePercent(getSwipeEdgePercent())

@@ -58,14 +58,11 @@ dependencies {
     api('com.leon:lfilepickerlibrary:1.8.0') {
         exclude group: 'com.android.support'
     }
-    /** *******     permission权限管理      *********/
-    api 'com.github.Haozi0456:EasyPermission:1.0.1'
     /** *******     bilibili图片选择裁剪库      *********/
     api 'com.bilibili:boxing:1.0.4'
     api 'com.bilibili:boxing-impl:1.0.4'
-    /** *******     leakcanary内存检测    *********/
-    debugApi 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    /** *******     permission权限管理      *********/
+    api 'com.github.Haozi0456:EasyPermission:1.0.1'
     /** *******     nineoldandroids      *********/
     api files('libs/nineoldandroids-2.4.0.jar')
     /** *******     orm      *********/
